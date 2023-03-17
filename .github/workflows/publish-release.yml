@@ -1,4 +1,4 @@
-name: Publish Release To Maven Central
+name: Publish Release To Git Repo
 
 on:
   # Run this workflow when a new GitHub release is created
@@ -27,4 +27,4 @@ jobs:
         run: ./gradlew closeAndReleaseRepository --no-daemon --no-parallel
         env:
           ORG_GRADLE_PROJECT_githubPackagesUsername: EzioPearce
-          ORG_GRADLE_PROJECT_githubPackagesPassword: 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
+          ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ secrets.ACCESS_TOKEN }}
