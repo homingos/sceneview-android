@@ -24,7 +24,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Publish release
-        run: ./gradlew closeAndReleaseRepository --no-daemon --no-parallel
+        run: ./gradlew publishAllPublicationsToGithubPackagesRepository --no-daemon --no-parallel
         env:
-          ORG_GRADLE_PROJECT_githubPackagesUsername: EzioPearce
-          ORG_GRADLE_PROJECT_githubPackagesPassword: ${{ secrets.ACCESS_TOKEN }}
+          ORG_GRADLE_PROJECT_GithubPackagesUsername: EzioPearce
+          ORG_GRADLE_PROJECT_GithubPackagesPassword: ${{ secrets.ACCESS_TOKEN }}
