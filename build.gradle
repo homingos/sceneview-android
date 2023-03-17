@@ -8,7 +8,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21"
         // Maven Central Publish
-        classpath "com.vanniktech:gradle-maven-publish-plugin:0.18.0"
+        classpath "com.vanniktech:gradle-maven-publish-plugin:0.24.0"
         // Dokka
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.7.10"
     }
@@ -54,8 +54,23 @@ afterEvaluate {
 
 allprojects {
     plugins.withId("com.vanniktech.maven.publish") {
+        /*
         mavenPublish {
             sonatypeHost = "S01"
+        }
+         */
+        publishing {
+            repositories {
+                maven {
+                    name = "GithubPackages"
+                    url = "https://maven.pkg.github.com/homingos/sceneview-android"
+                    // username and password (a personal Github access token) should be specified as
+                    // `githubPackagesUsername` and `githubPackagesPassword` Gradle properties or alternatively
+                    // as `ORG_GRADLE_PROJECT_githubPackagesUsername` and `ORG_GRADLE_PROJECT_githubPackagesPassword`
+                    // environment variables
+                    credentials(PasswordCredentials)
+                }
+            }
         }
     }
 }
